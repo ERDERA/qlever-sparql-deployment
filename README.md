@@ -37,7 +37,7 @@ sudo reboot
    pip install qlever
    ```
 
-## ▶️ Run Each Endpoint
+## Run Each Endpoint
 
 For each endpoint folder (`ordo/`, `hoom/`, `wikipathways/`), run the following commands:
 
