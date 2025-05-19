@@ -3,7 +3,7 @@
 This repository sets up three [QLever](https://github.com/ad-freiburg/qlever) SPARQL endpoints:
 
 - **ORDO** – Orphanet Rare Disease Ontology  
-- **HOOM** – Health Outcomes Ontology for Orphanet Mapping  
+- **HOOM** – The HPO-ORDO ontological module  
 - **WikiPathways** – RDF export of biological pathways
 
 Each endpoint is configured using a `Qleverfile` and includes a `get-data.sh` script for downloading or preparing its data.
@@ -81,3 +81,7 @@ Then visit [http://localhost:<definedport>](http://localhost:9000) in your brows
 │   └── get-data.sh
 └── qlever-ui-multi-config.json
 ```
+
+## Disclaimer
+This is a first draft release of a set of configuration scripts and documentation for setting up QLever SPARQL endpoints for ERDERA. The scripts are not yet fully tested and may require adjustments for specific use cases. The documentation is a work in progress and may not cover all aspects of the setup process. Please use this repository at your own risk and feel free to contribute improvements or report issues.
+
