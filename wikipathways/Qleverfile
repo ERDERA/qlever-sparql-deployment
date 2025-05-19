@@ -1,0 +1,32 @@
+[data]
+NAME             = wikipathways
+DESCRIPTION      = WikiPathways RDF
+TEXT_DESCRIPTION = RDF export from WikiPathways (authors, GPML, pathways, and metadata)
+
+GET_DATA_CMD     = \
+    curl -LO https://data.wikipathways.org/current/rdf/wikipathways-20250510-rdf-gpml.zip && \
+    curl -LO https://data.wikipathways.org/current/rdf/wikipathways-20250510-rdf-authors.zip && \
+    curl -LO https://data.wikipathways.org/current/rdf/wikipathways-20250510-rdf-wp.zip && \
+    curl -LO https://data.wikipathways.org/current/rdf/wikipathways-rdf-void.ttl && \
+    unzip -o wikipathways-20250510-rdf-gpml.zip && \
+    unzip -o wikipathways-20250510-rdf-authors.zip && \
+    unzip -o wikipathways-20250510-rdf-wp.zip
+
+[index]
+INPUT_FILES     = *.ttl
+CAT_INPUT_FILES = cat ${INPUT_FILES}
+SETTINGS_JSON   = { "ascii-prefixes-only": false, "num-triples-per-batch": 1000000 }
+TEXT_INDEX      = from_literals
+
+[server]
+HOSTNAME           = 81.24.6.122
+PORT               = 7026
+ACCESS_TOKEN       = ${data:NAME}
+MEMORY_FOR_QUERIES = 10G
+
+[runtime]
+SYSTEM = docker
+IMAGE  = docker.io/adfreiburg/qlever:latest
+
+[ui]
+UI_PORT = 9002

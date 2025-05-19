@@ -1,0 +1,31 @@
+# Qleverfile for ORDO-Orphanet dataset, adapted to include all RDF files in the folder.
+
+[data]
+NAME             = ordo_orphanet
+RELEASE          = 4.6
+DESCRIPTION      = ORDO-Orphanet RDF v${RELEASE}, local import
+
+GET_DATA_CMD = ./get-data.sh
+
+TEXT_DESCRIPTION = All literals, search with FILTER KEYWORDS(?text, "...")
+
+[index]
+INPUT_FILES = ${data:NAME}.prefix-definitions *.nt
+CAT_INPUT_FILES = find . -maxdepth 1 -type f \( -name "*.ttl" -o -name "*.nt" -o -name "*.rdf" \) -exec cat {} +
+SETTINGS_JSON   = { "ascii-prefixes-only": false, "num-triples-per-batch": 1000000, "prefixes-external": [""] }
+TEXT_INDEX      = from_literals
+
+
+[server]
+HOSTNAME           = 81.24.6.122
+PORT               = 7026
+ACCESS_TOKEN       = ${data:NAME}
+MEMORY_FOR_QUERIES = 10G
+
+[runtime]
+
+SYSTEM = docker
+IMAGE  = docker.io/adfreiburg/qlever:latest
+
+[ui]
+UI_PORT   = 9001
