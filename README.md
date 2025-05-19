@@ -8,7 +8,7 @@ This repository sets up three [QLever](https://github.com/ad-freiburg/qlever) SP
 
 Each endpoint is configured using a `Qleverfile` and includes a `get-data.sh` script for downloading or preparing its data.
 
-## 🔧 Prerequisites
+## Prerequisites
 
 - Python 3.10+ with `venv`
 - Docker (including Compose plugin)
@@ -19,7 +19,7 @@ sudo usermod -aG docker $USER
 sudo reboot
 ```
 
-## 🚀 Installation
+## Installation
 
 1. Clone this repository and enter it:
 
